@@ -1,13 +1,3 @@
-// import { StrictMode } from "react";
-// import { createRoot } from "react-dom/client";
-// import "./index.css";
-// import App from "./App.jsx";
-
-// createRoot(document.getElementById("root")).render(
-//   <StrictMode>
-//     <App />
-//   </StrictMode>
-// );
 import { createRoot } from "react-dom/client";
 import { restaurants } from "./mock";
 
@@ -16,32 +6,28 @@ const reactRoot = createRoot(root);
 
 reactRoot.render(
   <div>
-    {restaurants.map((restaurantElmnt) => (
-      <div key={restaurantElmnt.id}>
-        <h2 key={restaurantElmnt.id}>{restaurantElmnt.name}</h2>
+    {restaurants.map((restaurant) => (
+      <div key={restaurant.id}>
+        <h2 key={restaurant.id}>{restaurant.name}</h2>
         <h3>Menu</h3>
         <ul className="someClass">
-          {restaurantElmnt.menu.map((menuElmnt) => (
-            <li key={menuElmnt.id}>
-              {menuElmnt.name +
+          {restaurant.menu.map((dish) => (
+            <li key={dish.id}>
+              {dish.name +
                 " (" +
-                menuElmnt.ingredients +
+                dish.ingredients +
                 ")" +
                 " - " +
-                menuElmnt.price +
+                dish.price +
                 "$"}
             </li>
           ))}
         </ul>
         <h3>Reviews</h3>
         <ul className="someClass">
-          {restaurantElmnt.reviews.map((reviewElmnt) => (
-            <li key={reviewElmnt.id}>
-              {reviewElmnt.user +
-                ": '" +
-                reviewElmnt.text +
-                "'. Rate - " +
-                reviewElmnt.rating}
+          {restaurant.reviews.map((review) => (
+            <li key={review.id}>
+              {review.user + ": '" + review.text + "'. Rate - " + review.rating}
             </li>
           ))}
         </ul>
@@ -49,12 +35,3 @@ reactRoot.render(
     ))}
   </div>
 );
-
-console.log(reactRoot);
-
-{
-  /* <h3>Menu</h3>
-{rElement.menu.map((mElement) => (
-  <li key={mElement.id}>{mElement.name}</li>
-))} */
-}
