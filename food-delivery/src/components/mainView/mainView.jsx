@@ -1,16 +1,14 @@
 import { restaurants } from "../../mock";
+import { Restaurant } from "../restaurant/restaurant";
 import { DishDescriptionTile } from "../tiles/dishDescriptionTile";
 import { useState } from "react";
 
 export const MainView = ({ restaurantId }) => {
-  const [currentRestId, setCurrentRestId] = useState(
+  const [currentRestaurantId, setCurrentRestaurantId] = useState(
     restaurants[0]?.id ?? null
   );
-  const restaurant = restaurants.find((r) => r.id === currentRestId);
+  const restaurant = restaurants.find((r) => r.id === currentRestaurantId);
 
-  //   const restaurant = restaurants.find(
-  //     (restaurant) => restaurant.id === restaurantId
-  //   );
   return (
     <div>
       <div
@@ -25,32 +23,13 @@ export const MainView = ({ restaurantId }) => {
           <button
             style={{ flex: 1 }}
             key={id}
-            onClick={() => setCurrentRestId(id)}
+            onClick={() => setCurrentRestaurantId(id)}
           >
             {name}
           </button>
         ))}
       </div>
-      <main style={{ flex: 1 }}>
-        <div
-          style={{
-            border: "1px solid black",
-            borderRadius: "10px",
-            padding: "16px",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", // n колонок
-            gap: "16px", // отступ между элементами
-          }}
-        >
-          {restaurant.menu.map((dish) => (
-            <DishDescriptionTile
-              name={dish.name}
-              ingredients={dish.ingredients}
-              price={dish.price}
-            />
-          ))}
-        </div>
-      </main>
+      <Restaurant restaurant={restaurant} />
     </div>
   );
 };
