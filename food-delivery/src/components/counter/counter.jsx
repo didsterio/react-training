@@ -1,10 +1,10 @@
 import { useState } from "react";
 
+const minCount = 0;
+const maxCount = 5;
+
 export const Counter = () => {
   const [count, setCount] = useState(0);
-
-  let minCount = 0;
-  let maxCount = 5;
 
   return (
     <div style={{ marginTop: "auto", padding: "10px" }}>
