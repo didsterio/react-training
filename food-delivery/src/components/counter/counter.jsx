@@ -1,32 +1,13 @@
 import { useState } from "react";
 
-const minCount = 0;
-const maxCount = 5;
-
-export const Counter = () => {
-  const [count, setCount] = useState(0);
-
+export const Counter = ({ value, increment, decrement }) => {
   return (
     <div style={{ marginTop: "auto", padding: "10px" }}>
-      <button
-        style={{ width: "25px" }}
-        onClick={() => {
-          if (count > minCount) {
-            setCount(count - 1);
-          }
-        }}
-      >
+      <button style={{ width: "25px" }} onClick={decrement}>
         -
       </button>
-      {count}
-      <button
-        style={{ width: "25px" }}
-        onClick={() => {
-          if (count < maxCount) {
-            setCount(count + 1);
-          }
-        }}
-      >
+      {value}
+      <button style={{ width: "25px" }} onClick={increment}>
         +
       </button>
     </div>
