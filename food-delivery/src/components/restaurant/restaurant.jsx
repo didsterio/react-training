@@ -1,6 +1,12 @@
+import { ReviewForm } from "../reviewform/reviewform";
+import { Reviews } from "../reviews/reviews";
 import { DishDescriptionTile } from "../tiles/dishDescriptionTile";
 
 export const Restaurant = ({ restaurant }) => {
+  if (!restaurant) {
+    return null;
+  }
+
   return (
     <main style={{ flex: 1 }}>
       <div
@@ -9,10 +15,11 @@ export const Restaurant = ({ restaurant }) => {
           borderRadius: "10px",
           padding: "16px",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", // n колонок
-          gap: "16px", // отступ между элементами
+          gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+          gap: "16px",
         }}
       >
+        DISHES
         {restaurant.menu.map((dish) => (
           <DishDescriptionTile
             name={dish.name}
@@ -20,6 +27,14 @@ export const Restaurant = ({ restaurant }) => {
             price={dish.price}
           />
         ))}
+      </div>
+      {restaurant.reviews.length ? (
+        <Reviews reviews={restaurant.reviews} />
+      ) : (
+        <div>No reviews</div>
+      )}
+      <div>
+        <ReviewForm />
       </div>
     </main>
   );

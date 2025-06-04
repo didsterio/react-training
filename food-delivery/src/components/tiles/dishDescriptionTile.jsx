@@ -1,4 +1,5 @@
-import { Counter } from "../counter/counter";
+import { DishCounter } from "./dishCounter";
+import { useCounter } from "./useCounter";
 
 export const DishDescriptionTile = ({ name, ingredients, price }) => {
   return (
@@ -14,7 +15,7 @@ export const DishDescriptionTile = ({ name, ingredients, price }) => {
       <h2>{name}</h2>
       <h4>{ingredients}</h4>
       <h4>{price}$</h4>
-      <Counter />
+      <DishCounter />
     </div>
   );
 };
