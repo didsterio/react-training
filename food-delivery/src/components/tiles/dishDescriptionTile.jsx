@@ -1,17 +1,10 @@
 import { DishCounter } from "./dishCounter";
 import { useCounter } from "./useCounter";
+import styles from "./dishtile.module.css";
 
 export const DishDescriptionTile = ({ name, ingredients, price }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        borderRadius: "8px",
-        border: "1px solid black",
-        padding: "10px",
-      }}
-    >
+    <div className={styles.dishTile}>
       <h2>{name}</h2>
       <h4>{ingredients}</h4>
       <h4>{price}$</h4>

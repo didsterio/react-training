@@ -1,0 +1,24 @@
+.reviewsContainer {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 16px;
+
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  /* width: 100%; */
+}
+
+.reviewsElements {
+  border-radius: 10px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  /* width: 100%; */
+}
+
+.reviewsTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
