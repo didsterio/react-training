@@ -2,10 +2,6 @@ import { DishCounter } from "./dishCounter";
 import { useCounter } from "./useCounter";
 
 export const DishDescriptionTile = ({ name, ingredients, price }) => {
-  // const { state, ondecrementDish, onincrementDish } = useCounter();
-
-  // const { count } = state;
-
   return (
     <div
       style={{
