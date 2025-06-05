@@ -1,5 +1,6 @@
 import { useForm } from "./useform";
 import { Counter } from "../counter/counter";
+import styles from "./reviewForm.module.css";
 
 export const ReviewForm = () => {
   const {
@@ -14,16 +15,8 @@ export const ReviewForm = () => {
   const { user, text, rating } = state;
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        borderRadius: "8px",
-        border: "1px solid black",
-        padding: "10px",
-      }}
-    >
-      REVIEW FORM
+    <div className={styles.container}>
+      <div className={styles.containerTitle}>REVIEW FORM</div>
       <div style={{ display: "flex", alignItems: "center" }}>
         <label style={{ width: "100px", marginRight: "10px" }}>Имя:</label>
         <input

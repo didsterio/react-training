@@ -1,13 +1,14 @@
 import { useState } from "react";
+import styles from "./counter.module.css";
 
 export const Counter = ({ value, increment, decrement }) => {
   return (
-    <div style={{ marginTop: "auto", padding: "10px" }}>
-      <button style={{ width: "25px" }} onClick={decrement}>
+    <div className={styles.container}>
+      <button className={styles.button} onClick={decrement}>
         -
       </button>
       {value}
-      <button style={{ width: "25px" }} onClick={increment}>
+      <button className={styles.button} onClick={increment}>
         +
       </button>
     </div>

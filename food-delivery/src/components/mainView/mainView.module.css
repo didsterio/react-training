@@ -1,0 +1,11 @@
+.mainMenu {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  padding: 10px;
+}
+
+.restaurantbutton {
+  flex: 1;
+  width: 300px;
+}
