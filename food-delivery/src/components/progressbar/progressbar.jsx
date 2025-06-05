@@ -1,7 +1,7 @@
-import "./Progressbar.css";
+import styles from "./progressbar.module.css";
 import { useProgress } from "./useprogress";
 
 export const ProgressBar = () => {
   const value = useProgress();
-  return <div className="progress-bar" style={{ width: value }}></div>;
+  return <div className={styles.progressbarv} style={{ width: value }}></div>;
 };

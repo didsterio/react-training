@@ -1,5 +1,4 @@
 import { restaurants } from "../../mock";
-import { ProgressBar } from "../progressbar/progressbar";
 import { Restaurant } from "../restaurant/restaurant";
 import { useState } from "react";
 import styles from "./MainView.module.css";
@@ -15,7 +14,7 @@ export const MainView = ({ restaurantId }) => {
       <div className={styles.MainView}>
         {restaurants.map(({ id, name, menu, reviews }) => (
           <button
-            style={{ flex: 1, width: "300px" }}
+            className={styles.restaurantbutton}
             key={id}
             onClick={() => setCurrentRestaurantId(id)}
           >
