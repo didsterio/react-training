@@ -6,4 +6,11 @@
   background-color: #fafaf5;
   border-radius: 8px;
   border: 1px solid black;
+  width: 100%;
+}
+.themelayout {
+  justify-content: flex-start;
+}
+.authlayout {
+  justify-content: flex-end;
 }

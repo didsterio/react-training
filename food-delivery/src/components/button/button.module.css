@@ -1,0 +1,22 @@
+.root {
+  flex: 1;
+  width: 300px;
+}
+
+.darkThemeButton {
+  background-color: #313131;
+  border: 1px solid black;
+}
+
+.ligthThemeButton {
+  background-color: #c9c9c9;
+  border: 1px solid black;
+}
+
+.themeTypeButton {
+  justify-content: flex-start;
+}
+
+.authTypeButton {
+  justify-content: flex-end;
+}
