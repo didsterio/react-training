@@ -2,6 +2,7 @@ import { restaurants } from "../../mock";
 import { Restaurant } from "../restaurant/restaurant";
 import { useState } from "react";
 import styles from "./MainView.module.css";
+import Button from "../button/button";
 
 export const MainView = ({ restaurantId }) => {
   const [currentRestaurantId, setCurrentRestaurantId] = useState(
@@ -13,13 +14,11 @@ export const MainView = ({ restaurantId }) => {
     <div>
       <div className={styles.MainView}>
         {restaurants.map(({ id, name, menu, reviews }) => (
-          <button
-            className={styles.restaurantbutton}
+          <Button
             key={id}
             onClick={() => setCurrentRestaurantId(id)}
-          >
-            {name}
-          </button>
+            text={name}
+          />
         ))}
       </div>
       <Restaurant restaurant={restaurant} />
