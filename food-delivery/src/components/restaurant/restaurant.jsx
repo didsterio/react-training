@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { AuthContext } from "../auth-context";
 import { ReviewForm } from "../reviewform/reviewform";
 import { Reviews } from "../reviews/reviews";
 import { DishDescriptionTile } from "../tiles/dishDescriptionTile";
@@ -7,6 +9,8 @@ export const Restaurant = ({ restaurant }) => {
   if (!restaurant) {
     return null;
   }
+
+  const { auth } = useContext(AuthContext);
 
   return (
     <div>
@@ -19,14 +23,19 @@ export const Restaurant = ({ restaurant }) => {
           />
         ))}
       </div>
-      {restaurant.reviews.length ? (
-        <Reviews reviews={restaurant.reviews} />
-      ) : (
-        <div>No reviews</div>
+      {auth.isAuth &&
+        (restaurant.reviews.length ? (
+          <Reviews reviews={restaurant.reviews} />
+        ) : (
+          <div>No reviews</div>
+        ))}
+      {auth.isAuth && (
+        <div>
+          <ReviewForm />
+        </div>
       )}
-      <div>
-        <ReviewForm />
-      </div>
     </div>
   );
 };
+
+export default Restaurant;

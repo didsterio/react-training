@@ -1,15 +1,16 @@
-import { createContext } from "react";
 import { Layout } from "../layout/layout";
 import { MainView } from "../mainView/mainView";
-
-export const ThemeContext = createContext();
+import { ThemeContextProvider } from "../theme-context/theme-context-provider";
+import { AuthContextProvider } from "../auth-context/auth-context-provider";
 
 export const App = () => {
   return (
-    <ThemeContext value={"lightMode"}>
-      <Layout>
-        <MainView />
-      </Layout>
-    </ThemeContext>
+    <AuthContextProvider>
+      <ThemeContextProvider>
+        <Layout>
+          <MainView />
+        </Layout>
+      </ThemeContextProvider>
+    </AuthContextProvider>
   );
 };
