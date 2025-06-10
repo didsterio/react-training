@@ -1,7 +1,7 @@
 import { DishCounter } from "./dishCounter";
 import styles from "./dishtile.module.css";
 import { useContext } from "react";
-import { AuthContext } from "../app/app";
+import { AuthContext } from "../auth-context";
 
 export const DishDescriptionTile = ({ name, ingredients, price }) => {
   const { auth } = useContext(AuthContext);

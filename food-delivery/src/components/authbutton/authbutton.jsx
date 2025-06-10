@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styles from "./auth-button.module.css";
-import { AuthContext } from "../app/app";
 import Button from "../button/button";
+import { AuthContext } from "../auth-context";
 
 export const AuthButton = () => {
   const { auth, setAuth } = useContext(AuthContext);
@@ -15,8 +15,6 @@ export const AuthButton = () => {
         : { isAuth: true, userName: "User" };
     });
   };
-
-  console.log("auth = ", auth);
 
   return (
     <div className={styles.authContainer}>

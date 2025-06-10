@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../app/app";
+import { AuthContext } from "../auth-context";
 import { ReviewForm } from "../reviewform/reviewform";
 import { Reviews } from "../reviews/reviews";
 import { DishDescriptionTile } from "../tiles/dishDescriptionTile";
