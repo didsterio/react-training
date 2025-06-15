@@ -1,27 +1,28 @@
-import { restaurants } from "../../mock";
-import { Restaurant } from "../restaurant/restaurant";
 import { useState } from "react";
 import styles from "./MainView.module.css";
-import Button from "../button/button";
+import { useSelector } from "react-redux";
+import { selectRestaurantIds } from "../../redux/entities/restaurant/slice";
+import { RestaurantTab } from "../restaurant-tab/restaurant-tab";
+import Restaurant from "../restaurant/restaurant";
 
-export const MainView = ({ restaurantId }) => {
+export const MainView = () => {
+  const restaurantsIds = useSelector(selectRestaurantIds);
   const [currentRestaurantId, setCurrentRestaurantId] = useState(
-    restaurants[0]?.id ?? null
+    restaurantsIds[0]
   );
-  const restaurant = restaurants.find((r) => r.id === currentRestaurantId);
 
   return (
     <div>
       <div className={styles.MainView}>
-        {restaurants.map(({ id, name, menu, reviews }) => (
-          <Button
+        {restaurantsIds.map((id) => (
+          <RestaurantTab
             key={id}
+            id={id}
             onClick={() => setCurrentRestaurantId(id)}
-            text={name}
           />
         ))}
       </div>
-      <Restaurant restaurant={restaurant} />
+      <Restaurant restaurantId={currentRestaurantId} />
     </div>
   );
 };
