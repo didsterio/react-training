@@ -4,8 +4,14 @@ import { ReviewForm } from "../reviewform/reviewform";
 import { Reviews } from "../reviews/reviews";
 import { DishDescriptionTile } from "../tiles/dishDescriptionTile";
 import styles from "./restaurant.module.css";
+import { useSelector } from "react-redux";
+import { selectRestaurantById } from "../../redux/entities/restaurant/slice";
 
-export const Restaurant = ({ restaurant }) => {
+export const Restaurant = ({ restaurantId }) => {
+  const restaurant = useSelector(
+    (state) => selectRestaurantById(state, restaurantId) || {}
+  );
+
   if (!restaurant) {
     return null;
   }
@@ -15,17 +21,13 @@ export const Restaurant = ({ restaurant }) => {
   return (
     <div>
       <div className={styles.restcontainer}>
-        {restaurant.menu.map((dish) => (
-          <DishDescriptionTile
-            name={dish.name}
-            ingredients={dish.ingredients}
-            price={dish.price}
-          />
+        {restaurant.menu.map((id) => (
+          <DishDescriptionTile dishId={id} />
         ))}
       </div>
       {auth.isAuth &&
         (restaurant.reviews.length ? (
-          <Reviews reviews={restaurant.reviews} />
+          <Reviews reviewIds={restaurant.reviews} />
         ) : (
           <div>No reviews</div>
         ))}
