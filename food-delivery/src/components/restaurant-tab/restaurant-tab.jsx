@@ -8,5 +8,5 @@ export const RestaurantTab = ({ id, onClick }) => {
 
   const { name } = restaurant;
 
-  return <Button key={id} onClick={onClick} text={name} />;
+  return <Button onClick={onClick} text={name} />;
 };
