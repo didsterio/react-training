@@ -1,12 +1,12 @@
 import { Counter } from "../counter/counter";
 import { useCounter } from "./useCounter";
 
-export const DishCounter = () => {
-  const { state, ondecrementDish, onincrementDish } = useCounter();
-  const { count } = state;
+export const DishCounter = ({ dish }) => {
+  const { value, ondecrementDish, onincrementDish } = useCounter(dish);
+
   return (
     <Counter
-      value={count}
+      value={value}
       increment={onincrementDish}
       decrement={ondecrementDish}
     />

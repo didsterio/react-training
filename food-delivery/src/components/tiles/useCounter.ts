@@ -1,44 +1,28 @@
-import { useReducer } from "react";
+import { useCallback, useReducer } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  removeFromCart,
+  selectItemAmoutById,
+} from "../../redux/entities/cart/slice";
 
-const INITIAL_STATE = {
-  count: 0,
-};
+export const useCounter = (dish) => {
+  const dispatch = useDispatch();
 
-const INCREMENT_DISH_ACTION = "incrementDish";
-const DECREMENT_DISH_ACTION = "decrementDish";
+  const amount = useSelector((state) => selectItemAmoutById(state, dish.id));
 
-function countReducer(state, { type, payload }) {
-  switch (type) {
-    case INCREMENT_DISH_ACTION:
-      return {
-        ...state,
-        count: Math.min(state.count + 1, 15),
-      };
-    case DECREMENT_DISH_ACTION:
-      return {
-        ...state,
-        count: Math.max(state.count - 1, 0),
-      };
-    default:
-      return state;
-  }
-}
+  const onincrementDish = useCallback(
+    () => dispatch(addToCart(dish)),
+    [dispatch, dish.id]
+  );
 
-export const useCounter = () => {
-  const [state, dispatch] = useReducer(countReducer, INITIAL_STATE);
-
-  const { count } = state;
-
-  const onincrementDish = (count) => {
-    dispatch({ type: INCREMENT_DISH_ACTION, payload: count });
-  };
-
-  const ondecrementDish = (count) => {
-    dispatch({ type: DECREMENT_DISH_ACTION, payload: count });
-  };
+  const ondecrementDish = useCallback(
+    () => dispatch(removeFromCart(dish.id)),
+    [dispatch, dish.id]
+  );
 
   return {
-    state,
+    value: amount,
     onincrementDish,
     ondecrementDish,
   };

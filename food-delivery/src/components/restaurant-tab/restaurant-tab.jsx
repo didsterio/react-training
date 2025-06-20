@@ -1,12 +1,11 @@
 import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/entities/restaurant/slice";
-import Button from "../button/button";
+import { NavButton } from "../NavButton/navbutton";
 
-export const RestaurantTab = ({ id, onClick }) => {
+export const RestaurantTab = ({ id, to }) => {
   const restaurant =
     useSelector((state) => selectRestaurantById(state, id)) || {};
 
   const { name } = restaurant;
-
-  return <Button onClick={onClick} text={name} />;
+  return <NavButton to={to} name={name} />;
 };
