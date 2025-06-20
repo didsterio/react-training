@@ -1,13 +1,25 @@
-.header {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 20px;
-  padding: 10px 20px;
+.headerContainer {
+  display: flex;
+  align-items: center; /* вертикальное выравнивание */
+  justify-content: center; /* h1 по центру (по умолчанию) */
+  position: relative; /* для абсолютного позиционирования кнопок */
+  margin: 20px 20px;
+  border: 1px solid black;
+  border-radius: 10px;
 }
-.themelayout {
-  justify-content: flex-start;
+
+h1 {
+  margin: 0; /* убираем отступы у h1 */
+  text-align: center; /* текст внутри h1 по центру */
 }
-.authlayout {
-  justify-content: flex-end;
+
+.headerButtons {
+  margin: 20px 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  position: absolute; /* вырываем из потока */
+  right: 0; /* прижимаем к правому краю */
+  display: flex; /* кнопки в одну линию */
+  gap: 5px; /* отступ между кнопками */
 }
