@@ -17,9 +17,13 @@ export const AuthButton = () => {
   };
 
   return (
-    <div className={styles.authContainer}>
+    <div>
       {auth.isAuth && auth.userName && <div>{auth.userName}</div>}
-      <Button text={auth.isAuth ? "Logout" : "Login"} onClick={handleClick} />
+      <Button
+        className={styles.authContainer}
+        text={auth.isAuth ? "Logout" : "Login"}
+        onClick={handleClick}
+      />
     </div>
   );
 };
