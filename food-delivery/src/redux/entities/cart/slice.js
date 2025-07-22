@@ -1,4 +1,4 @@
-import { compose, createSlice } from "@reduxjs/toolkit";
+import { compose, createSlice, createSelector } from "@reduxjs/toolkit";
 import { normalizedDishes } from "../../../normilized-mocks";
 
 export const cartSlice = createSlice({
@@ -6,8 +6,7 @@ export const cartSlice = createSlice({
   initialState: {},
   reducers: {
     addToCart: (state, { payload }) => {
-      const { id, name } = payload;
-      state[id] = (state[id] || 0) + 1;
+      state[payload] = (state[payload] || 0) + 1;
     },
     removeFromCart: (state, { payload }) => {
       if (!state[payload]) {
@@ -19,17 +18,20 @@ export const cartSlice = createSlice({
       }
     },
   },
-  selectors: {
-    selectCartItems: (state) =>
-      Object.keys(state).reduce((acc, id) => {
-        acc.push({ id, amount: state[id] });
-        return acc;
-      }, []),
-    selectItemAmoutById: (state, id) => {
-      return state[id];
-    },
-  },
 });
 
+export const selectCartItems = createSelector(
+  [(state) => state.cartSlice],
+  (cartState) => 
+    Object.keys(cartState).reduce((acc, id) => {
+      acc.push({ id, amount: cartState[id] });
+      return acc;
+    }, [])
+);
+
+export const selectItemAmountById = createSelector(
+  [(state) => state.cartSlice, (_, id) => id],
+  (cartState, id) => cartState[id]
+);
+
 export const { addToCart, removeFromCart } = cartSlice.actions;
-export const { selectCartItems, selectItemAmoutById } = cartSlice.selectors;

@@ -18,7 +18,7 @@ export const RestaurantMenu = ({ restaurantId }) => {
     <div>
       <div className={styles.restcontainer}>
         {restaurant.menu.map((id) => (
-          <DishDescriptionTile dishId={id} />
+          <DishDescriptionTile key={id} dishId={id} />
         ))}
       </div>
     </div>

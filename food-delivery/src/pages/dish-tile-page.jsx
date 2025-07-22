@@ -24,7 +24,7 @@ export const DishDescriptionTilePage = () => {
       <h2>{dish.name}</h2>
 
       {dish.ingredients.map((ingredient) => (
-        <h4>{ingredient}</h4>
+        <h4 key={ingredient}>{ingredient}</h4>
       ))}
       <h4>{dish.price}$</h4>
       {auth.isAuth && <DishCounter dish={dish} />}
